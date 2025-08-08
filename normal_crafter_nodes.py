@@ -171,7 +171,8 @@ class NormalCrafterNode:
 
     def _get_local_nc_model_path(self):
         base_models_dir = os.path.join(folder_paths.models_dir, NORMALCRAFTER_MODELS_SUBDIR_NAME)
-        os.makedirs(base_models_dir, exist_ok=True)
+        if not os.path.isdir(base_models_dir):
+            os.makedirs(base_models_dir)
         model_name_folder = NORMALCRAFTER_REPO_ID.split('/')[-1]
         specific_model_path = os.path.join(base_models_dir, model_name_folder)
         return specific_model_path
